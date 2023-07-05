@@ -22,9 +22,9 @@ class top(Elaboratable):
                     m.d.sync+= array.eq(array >> 1)
             
             with m.Switch(array):
-                with m.Case(0x40):
+                with m.Case(0b01000000):
                     m.d.sync+= dir.eq(1)
-                with m.Case(0x02):
+                with m.Case(0b00000010):
                     m.d.sync+= dir.eq(0)
 
             m.d.sync+= counter.eq(0)
