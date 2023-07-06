@@ -104,5 +104,5 @@ if __name__ == "__main__":
     sim.add_clock(1e-6)
     sim.add_sync_process(proc)
 
-    with sim.write_vcd("spi.vcd",'w'):
+    with sim.write_vcd("spi.vcd", 'w'):
         sim.run()
