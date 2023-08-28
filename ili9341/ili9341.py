@@ -3,6 +3,7 @@ from amaranth.sim import *
 from amaranth_soc.memory import *
 from amaranth_soc.wishbone import *
 from math import ceil, log2
+import sys
 
 class SPI(Elaboratable, Interface):
     def __init__(self, data):
@@ -16,7 +17,7 @@ class SPI(Elaboratable, Interface):
         if platform is None:
             # ta = Signal(1)
             # m.d.sync += ta.eq(~ta)
-            clockdiv = 3
+            clockdiv = 1
         else:
             clockdiv = int(platform.default_clk_frequency/5) #200kHz
 
@@ -26,7 +27,7 @@ class SPI(Elaboratable, Interface):
         self.copi = Signal(1, reset = 0)
         self.buffer = Signal(16, reset = 0)
         self.periphclock = Signal(range(clockdiv +1))
-        self.bytecounter = Signal(4, reset = 0xF)
+        self.bytecounter = Signal(4, reset = 0x0)
 
         m.submodules.r = self.r 
 
@@ -86,23 +87,24 @@ p = 0
 f = 0
 
 # Sample data
-dut = SPI([0xAAAA, 0xFFFF, 0xDEAD, 0xBEEF])
+data = [0xAAAA, 0xFFFF, 0xDEAD, 0xBEEF]
+dut = SPI(data)
 
 # Unit test
 def spi_ut(rom):
-    yield Tick()
-    yield Settle()
+    for _ in range(sys.getsizeof(data)*2):
+        yield Tick()
+        yield Settle()
 
 # Full test
 
 def proc():
-    for _ in range(150):
-        yield from spi_ut(dut)
+    yield from spi_ut(dut)
 
 if __name__ == "__main__":
     sim = Simulator(dut)
     sim.add_clock(1e-6)
     sim.add_sync_process(proc)
 
-    with sim.write_vcd("spi.vcd", 'w'):
+    with sim.write_vcd("ili9341.vcd", 'w'):
         sim.run()
