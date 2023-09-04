@@ -1,6 +1,4 @@
 from amaranth import *
-from amaranth.sim import *
-from amaranth.back import verilog
 
 class PWM(Elaboratable):
     def __init__(self):
@@ -31,19 +29,22 @@ class PWM(Elaboratable):
         
         return m
 
-dut = PWM()
-
-def pwm_ut(pwm, duty):
-    yield pwm.dutycycle.eq(duty)
-    for _ in range(255):
-        yield Tick()
-        yield Settle()
-
-def proc():
-    for duty in range(255):
-        yield from pwm_ut(dut, duty)
-
 if __name__ == "__main__":
+    from amaranth.sim import *
+    from amaranth.back import verilog
+
+    dut = PWM()
+
+    def pwm_ut(pwm, duty):
+        yield pwm.dutycycle.eq(duty)
+        for _ in range(255):
+            yield Tick()
+            yield Settle()
+
+    def proc():
+        for duty in range(255):
+            yield from pwm_ut(dut, duty)
+
     sim = Simulator(dut)
     sim.add_clock(1e-6)
     sim.add_sync_process(proc)

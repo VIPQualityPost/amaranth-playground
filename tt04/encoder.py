@@ -1,5 +1,4 @@
 from amaranth import *
-from amaranth.sim import *
 
 class ABEncoder(Elaboratable):
     def __init__(self):
@@ -66,42 +65,44 @@ class ABEncoder(Elaboratable):
             
         return m
 
-dut = ABEncoder()
-
-def encoder_ut(encoder, direction):
-    for _ in range(5):
-        yield encoder.a.eq(1)
-        for _ in range(5):
-            yield Tick()
-            yield Settle()
-
-        yield encoder.b.eq(direction == 0)
-        for _ in range(5):
-            yield Tick()
-            yield Settle()
-
-        yield encoder.a.eq(0)
-        for _ in range(5):
-            yield Tick()
-            yield Settle()
-        
-        yield encoder.b.eq(direction == 1)
-        for _ in range(5):
-            yield Tick()
-            yield Settle()
-        
-
-def proc():
-    dut.rst.eq(1)
-    for _ in range(10):
-        yield Tick()
-        yield Settle()
-
-    dut.rst.eq(0)
-    yield from encoder_ut(dut, 0)
-    yield from encoder_ut(dut, 1)
-
 if __name__ == "__main__":
+    from amaranth.sim import *
+    from amaranth.back import verilog
+
+    dut = ABEncoder()
+
+    def encoder_ut(encoder, direction):
+        for _ in range(5):
+            yield encoder.a.eq(1)
+            for _ in range(5):
+                yield Tick()
+                yield Settle()
+
+            yield encoder.b.eq(direction == 0)
+            for _ in range(5):
+                yield Tick()
+                yield Settle()
+            
+            yield encoder.a.eq(0)
+            for _ in range(5):
+                yield Tick()
+                yield Settle()
+
+            yield encoder.b.eq(direction == 1)
+            for _ in range(5):
+                yield Tick()
+                yield Settle()    
+        
+    def proc():
+        dut.rst.eq(1)
+        for _ in range(10):
+            yield Tick()
+            yield Settle()
+
+        dut.rst.eq(0)
+        yield from encoder_ut(dut, 0)
+        yield from encoder_ut(dut, 1)
+
     sim = Simulator(dut)
     sim.add_clock(1e-6)
     sim.add_sync_process(proc)

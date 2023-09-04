@@ -1,7 +1,5 @@
 from amaranth import *
-from amaranth.sim import *
 from amaranth.build import Platform
-from amaranth.asserts import Assert, Assume, Cover
 
 from pwm import PWM
 from encoder import ABEncoder
@@ -79,40 +77,42 @@ class TinyTapeoutTop(Elaboratable):
         
         return m
 
-dut = TinyTapeoutTop()
-
-def tt04_ut(dut, direction):
-    yield dut.io_in.eq(0x01)
-    for _ in range(5):
-        yield Tick()
-        yield Settle()
-
-    yield dut.io_in.eq(0x03)
-    for _ in range(5):
-        yield Tick()
-        yield Settle()
-
-    yield dut.io_in.eq(0x00)
-    for _ in range(5):
-        yield Tick()
-        yield Settle()
-    
-    yield dut.io_in.eq(0x02)
-    for _ in range(5):
-        yield Tick()
-        yield Settle()
-
-def proc():
-    dut.pin_reset.eq(1)
-    for _ in range(25):
-        yield Tick()
-        yield Settle()
-    
-    dut.pin_reset.eq(1)
-    yield from tt04_ut(dut, 0)
-    yield from tt04_ut(dut, 1)
-
 if __name__ == "__main__":
+    from amaranth.sim import *
+
+    dut = TinyTapeoutTop()
+
+    def tt04_ut(dut, direction):
+        yield dut.io_in.eq(0x01)
+        for _ in range(5):
+            yield Tick()
+            yield Settle()
+
+        yield dut.io_in.eq(0x03)
+        for _ in range(5):
+            yield Tick()
+            yield Settle()
+
+        yield dut.io_in.eq(0x00)
+        for _ in range(5):
+            yield Tick()
+            yield Settle()
+        
+        yield dut.io_in.eq(0x02)
+        for _ in range(5):
+            yield Tick()
+            yield Settle()
+
+    def proc():
+        dut.pin_reset.eq(1)
+        for _ in range(25):
+            yield Tick()
+            yield Settle()
+        
+        dut.pin_reset.eq(1)
+        yield from tt04_ut(dut, 0)
+        yield from tt04_ut(dut, 1)
+
     sim = Simulator(dut)
     sim.add_clock(1e-6)
     sim.add_sync_process(proc)
