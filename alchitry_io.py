@@ -4,13 +4,14 @@ import subprocess
 
 from amaranth.build import *
 from amaranth.vendor.lattice_ice40 import *
+from amaranth_boards.alchitry_au import *
 from amaranth_boards.alchitry_cu import *
 from .resources import *
 
 __all__ = ["AlchitryCuIOPlatform"]
 
-class AlchitryCuIOPlatform(AlchitryCuPlatform):
-    resources = [
+if platform is AlchitryCuPlatform or AlchitryAuPlatform:
+    platform.add_resources([
         *Display7SegResource(0, 
             a="3", b="4", c="18", d="19" 
             e="20", d="2", g="1", dp="17", 
@@ -20,10 +21,10 @@ class AlchitryCuIOPlatform(AlchitryCuPlatform):
         # Not sure how to handle multiplex display..
         # Control line for anode are 21 22 5 6 [display 0-3]
         Resource("anodes",0,
-            Subsignal("7seg_0", Pins("21", dir="o")),
-            Subsignal("7seg_1", Pins("22", dir="o")),
-            Subsignal("7seg_2", Pins("5",  dir="o")),
-            Subsignal("7seg_3", Pins("6",  dir="o")),
+            Subsignal("seg_0", Pins("21", dir="o")),
+            Subsignal("seg_1", Pins("22", dir="o")),
+            Subsignal("seg_2", Pins("5",  dir="o")),
+            Subsignal("seg_3", Pins("6",  dir="o")),
             conn=("bank",0), invert=True, Attrs(IO_STANDARD="SB_LVCMOS")
             )
 
@@ -65,13 +66,13 @@ class AlchitryCuIOPlatform(AlchitryCuPlatform):
             
         # Total of 24 LED (3 banks of 8). Banks are split between connectors
         # So no easy way to resolve.
-        *LEDResources(0, 
+        *LEDResources(
             pins="14 13 12 11 10 9 8 7 6 5 4 3 2 1", conn=("bank",1),
             invert=True, attrs="SB_LVCMOS"
             )
         
-        *LEDResources(1,
+        *LEDResources(
             pins="16 15 14 13 12 11 10 9 8 7", conn=("bank",0),
             invert=True, attrs="SB_LVCMOS"
             )
-    ]
+    ])

@@ -4,7 +4,7 @@ import subprocess
 
 from amaranth.build import *
 from amaranth.vendor.lattice_ice40 import *
-from .resources import *
+from amaranth_boards.resources import *
 
 __all__ = ["AlchitryCuPlatform"]
 
@@ -38,21 +38,21 @@ class AlchitryCuPlatform(LatticeICE40Platform):
             attrs=Attrs(IO_STANDARD="SB_LVCMOS")
         ),
 
-        *LEDResources("leds", 0,
+        *LEDResources(
             pins="J11 K11 K12 K14 L12 L14 M12 N14", 
             attrs=Attrs(IO_STANDARD="SB_LVCMOS")
         ),
 
-        *ButtonResources(0,
-        pins="P8", invert=True, attrs=Attrs("SB_LVCMOS")
+        *ButtonResources(
+        pins="P8", invert=True, attrs=Attrs(IO_STANDARD="SB_LVCMOS")
         )
     ]
 
     connectors  = [
-        Connector("bank", 0, "M1  L1  J1  J3  G1  G3  E1  D1  C1  B1  D3  C3  A1  A2  A3  A4"
+        Connector("bank", 0, "M1  L1  J1  J3  G1  G3  E1  D1  C1  B1  D3  C3  A1  A2  A3  A4 "
                              "P1  N1  K4  K3  H3  H1  G4  H4  F3  F4  E4  D4  C4  D5  C5  A5"),
-        Connector("bank", 1, "A6  A7  A10 A11 C9  C10 A12 B14 C14 D14 E14 E12 F14 G14 H12 J12"
-                             "C6  C7  D6  D7  D9  D10 C11 C12 D11 D12 E11 F11 F12 G12 G11 H11"),
+        Connector("bank", 1, "A6  A7  A10 A11 C9  C10 A12 B14 C14 D14 E14 E12 F14 G14 H12 J12 "
+                             "C6  C7  D6  D7  D9  D10 C11 C12 D11 D12 E11 F11 F12 G12 G11 H11 "),
         Connector("bank", 2, "M3  M4  L4  L5  M6  M7  L9  -   -   -   -   -   -   -   -   -  "
                              "P2  P3  P4  P5  L6  L8  P10 -   -   -   -   -   -   -   -   -  ")
     ]

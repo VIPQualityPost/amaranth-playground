@@ -1,0 +1,220 @@
+Info: constrained 'seven_segment_0__a__io' to bel 'X0/Y6/io0'
+Info: constrained 'seven_segment_0__b__io' to bel 'X0/Y6/io1'
+Info: constrained 'seven_segment_0__c__io' to bel 'X0/Y11/io1'
+Info: constrained 'seven_segment_0__d__io' to bel 'X0/Y11/io0'
+Info: constrained 'seven_segment_0__e__io' to bel 'X0/Y4/io1'
+Info: constrained 'seven_segment_0__f__io' to bel 'X0/Y18/io1'
+Info: constrained 'seven_segment_0__g__io' to bel 'X0/Y18/io0'
+Info: constrained 'seven_segment_0__dp__io' to bel 'X0/Y4/io0'
+Info: constrained 'anodes_0__io[0]' to bel 'X0/Y16/io0'
+Info: constrained 'anodes_0__io[1]' to bel 'X0/Y16/io1'
+Info: constrained 'anodes_0__io[2]' to bel 'X0/Y17/io0'
+Info: constrained 'anodes_0__io[3]' to bel 'X0/Y17/io1'
+Info: constrained 'clk100_0__io' to bel 'X16/Y0/io1'
+Info: constraining clock net 'cd_sync_clk100_0__i' to 100.00 MHz
+
+Info: Packing constants..
+Info: Packing IOs..
+Info: seven_segment_0__d__io feeds SB_IO pin_seven_segment_0__d.seven_segment_0__d_0, removing $nextpnr_iobuf seven_segment_0__d__io.
+Info: seven_segment_0__c__io feeds SB_IO pin_seven_segment_0__c.seven_segment_0__c_0, removing $nextpnr_iobuf seven_segment_0__c__io.
+Info: seven_segment_0__b__io feeds SB_IO pin_seven_segment_0__b.seven_segment_0__b_0, removing $nextpnr_iobuf seven_segment_0__b__io.
+Info: seven_segment_0__a__io feeds SB_IO pin_seven_segment_0__a.seven_segment_0__a_0, removing $nextpnr_iobuf seven_segment_0__a__io.
+Info: clk100_0__io feeds SB_IO pin_clk100_0.clk100_0_0, removing $nextpnr_iobuf clk100_0__io.
+Info: anodes_0__io[3] feeds SB_IO pin_anodes_0.anodes_0_3, removing $nextpnr_iobuf anodes_0__io[3].
+Info: anodes_0__io[2] feeds SB_IO pin_anodes_0.anodes_0_2, removing $nextpnr_iobuf anodes_0__io[2].
+Info: anodes_0__io[1] feeds SB_IO pin_anodes_0.anodes_0_1, removing $nextpnr_iobuf anodes_0__io[1].
+Info: anodes_0__io[0] feeds SB_IO pin_anodes_0.anodes_0_0, removing $nextpnr_iobuf anodes_0__io[0].
+Info: seven_segment_0__g__io feeds SB_IO pin_seven_segment_0__g.seven_segment_0__g_0, removing $nextpnr_iobuf seven_segment_0__g__io.
+Info: seven_segment_0__f__io feeds SB_IO pin_seven_segment_0__f.seven_segment_0__f_0, removing $nextpnr_iobuf seven_segment_0__f__io.
+Info: seven_segment_0__e__io feeds SB_IO pin_seven_segment_0__e.seven_segment_0__e_0, removing $nextpnr_iobuf seven_segment_0__e__io.
+Info: seven_segment_0__dp__io feeds SB_IO pin_seven_segment_0__dp.seven_segment_0__dp_0, removing $nextpnr_iobuf seven_segment_0__dp__io.
+Info: Packing LUT-FFs..
+Info:       84 LCs used as LUT4 only
+Info:       97 LCs used as LUT4 and DFF
+Info: Packing non-LUT FFs..
+Info:        4 LCs used as DFF only
+Info: Packing carries..
+Info:        5 LCs used as CARRY only
+Info: Packing indirect carry+LUT pairs...
+Info:        1 LUTs merged into carry LCs
+Info: Packing RAMs..
+Info: Placing PLLs..
+Info: Packing special functions..
+Info: Packing PLLs..
+Info: Promoting globals..
+Info: promoting cd_sync.ready_SB_LUT4_I3_1_O [reset] (fanout 45)
+Info: promoting cd_sync.ready_SB_LUT4_I3_O [reset] (fanout 25)
+Info: promoting cd_sync.ready_SB_LUT4_I3_2_O [reset] (fanout 19)
+Info: Constraining chains...
+Info:        6 LCs used to legalise carry chains.
+Info: Checksum: 0x94d11859
+
+Info: Device utilisation:
+Info: 	         ICESTORM_LC:   197/ 7680     2%
+Info: 	        ICESTORM_RAM:     0/   32     0%
+Info: 	               SB_IO:    13/  256     5%
+Info: 	               SB_GB:     4/    8    50%
+Info: 	        ICESTORM_PLL:     0/    2     0%
+Info: 	         SB_WARMBOOT:     0/    1     0%
+
+Info: Placed 14 cells based on constraints.
+Info: Creating initial analytic placement for 139 cells, random placement wirelen = 5297.
+Info:     at initial placer iter 0, wirelen = 153
+Info:     at initial placer iter 1, wirelen = 151
+Info:     at initial placer iter 2, wirelen = 134
+Info:     at initial placer iter 3, wirelen = 151
+Info: Running main analytical placer, max placement attempts per cell = 10000.
+Info:     at iteration #1, type ICESTORM_LC: wirelen solved = 133, spread = 686, legal = 759; time = 0.00s
+Info:     at iteration #1, type SB_GB: wirelen solved = 754, spread = 782, legal = 841; time = 0.00s
+Info:     at iteration #1, type ALL: wirelen solved = 151, spread = 855, legal = 897; time = 0.00s
+Info:     at iteration #2, type ICESTORM_LC: wirelen solved = 234, spread = 619, legal = 653; time = 0.00s
+Info:     at iteration #2, type SB_GB: wirelen solved = 574, spread = 599, legal = 662; time = 0.00s
+Info:     at iteration #2, type ALL: wirelen solved = 145, spread = 590, legal = 736; time = 0.00s
+Info:     at iteration #3, type ICESTORM_LC: wirelen solved = 256, spread = 524, legal = 591; time = 0.00s
+Info:     at iteration #3, type SB_GB: wirelen solved = 510, spread = 536, legal = 597; time = 0.00s
+Info:     at iteration #3, type ALL: wirelen solved = 146, spread = 557, legal = 644; time = 0.00s
+Info:     at iteration #4, type ICESTORM_LC: wirelen solved = 284, spread = 584, legal = 627; time = 0.00s
+Info:     at iteration #4, type SB_GB: wirelen solved = 550, spread = 575, legal = 627; time = 0.00s
+Info:     at iteration #4, type ALL: wirelen solved = 163, spread = 512, legal = 630; time = 0.00s
+Info:     at iteration #5, type ICESTORM_LC: wirelen solved = 293, spread = 609, legal = 645; time = 0.00s
+Info:     at iteration #5, type SB_GB: wirelen solved = 563, spread = 589, legal = 645; time = 0.00s
+Info:     at iteration #5, type ALL: wirelen solved = 176, spread = 590, legal = 703; time = 0.00s
+Info:     at iteration #6, type ICESTORM_LC: wirelen solved = 292, spread = 700, legal = 719; time = 0.00s
+Info:     at iteration #6, type SB_GB: wirelen solved = 639, spread = 665, legal = 727; time = 0.00s
+Info:     at iteration #6, type ALL: wirelen solved = 194, spread = 657, legal = 725; time = 0.00s
+Info:     at iteration #7, type ICESTORM_LC: wirelen solved = 308, spread = 822, legal = 832; time = 0.00s
+Info:     at iteration #7, type SB_GB: wirelen solved = 749, spread = 774, legal = 832; time = 0.00s
+Info:     at iteration #7, type ALL: wirelen solved = 191, spread = 782, legal = 847; time = 0.00s
+Info:     at iteration #8, type ICESTORM_LC: wirelen solved = 323, spread = 605, legal = 663; time = 0.00s
+Info:     at iteration #8, type SB_GB: wirelen solved = 580, spread = 606, legal = 672; time = 0.00s
+Info:     at iteration #8, type ALL: wirelen solved = 223, spread = 500, legal = 652; time = 0.00s
+Info:     at iteration #9, type ICESTORM_LC: wirelen solved = 304, spread = 633, legal = 712; time = 0.00s
+Info:     at iteration #9, type SB_GB: wirelen solved = 632, spread = 658, legal = 720; time = 0.00s
+Info:     at iteration #9, type ALL: wirelen solved = 213, spread = 585, legal = 671; time = 0.00s
+Info: HeAP Placer Time: 0.07s
+Info:   of which solving equations: 0.05s
+Info:   of which spreading cells: 0.00s
+Info:   of which strict legalisation: 0.01s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 28, wirelen = 630
+Info:   at iteration #5: temp = 0.000000, timing cost = 26, wirelen = 487
+Info:   at iteration #10: temp = 0.000000, timing cost = 25, wirelen = 456
+Info:   at iteration #15: temp = 0.000000, timing cost = 24, wirelen = 444
+Info:   at iteration #19: temp = 0.000000, timing cost = 24, wirelen = 437 
+Info: SA placement time 0.04s
+
+Info: Max frequency for clock 'cd_sync_clk100_0__i': 85.00 MHz (FAIL at 100.00 MHz)
+
+Info: Max delay posedge cd_sync_clk100_0__i -> <async>: 3.48 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 3 endpoint(s)
+Info:          + represents [1,3) endpoint(s)
+Info: [ -1765,   2389) |****************************+
+Info: [  2389,   6543) |************************************************************ 
+Info: [  6543,  10697) |****************************************+
+Info: [ 10697,  14851) | 
+Info: [ 14851,  19005) | 
+Info: [ 19005,  23159) | 
+Info: [ 23159,  27313) | 
+Info: [ 27313,  31467) | 
+Info: [ 31467,  35621) | 
+Info: [ 35621,  39775) | 
+Info: [ 39775,  43929) | 
+Info: [ 43929,  48083) | 
+Info: [ 48083,  52237) | 
+Info: [ 52237,  56391) | 
+Info: [ 56391,  60545) | 
+Info: [ 60545,  64699) | 
+Info: [ 64699,  68853) | 
+Info: [ 68853,  73007) | 
+Info: [ 73007,  77161) | 
+Info: [ 77161,  81315) |***+
+Info: Checksum: 0x443d20e3
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 663 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:        813 |      111        653 |  111   653 |         0|       0.10       0.10|
+Info: Routing complete.
+Info: Router1 time 0.10s
+Info: Checksum: 0x26d8cc90
+
+Info: Critical path report for clock 'cd_sync_clk100_0__i' (posedge -> posedge):
+Info: curr total
+Info:  0.5  0.5  Source counter_SB_DFFSR_Q_D_SB_LUT4_O_24_LC.O
+Info:  0.6  1.1    Net counter[0] (4,8) -> (3,9)
+Info:                Sink strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_5_I1_SB_LUT4_O_I1_SB_LUT4_O_I0_SB_LUT4_O_1_LC.I0
+Info:                Defined in:
+Info:                  /Users/mateijordache/Documents/electronics_projects/amaranth-playground/sevseg/top.py:65
+Info:                  /Users/mateijordache/Documents/github-stuff/oss-cad-suite/libexec/../share/yosys/ice40/arith_map.v:51.21-51.22
+Info:  0.4  1.6  Source strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_5_I1_SB_LUT4_O_I1_SB_LUT4_O_I0_SB_LUT4_O_1_LC.O
+Info:  1.0  2.5    Net strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_5_I1_SB_LUT4_O_I1_SB_LUT4_O_I0[2] (3,9) -> (3,10)
+Info:                Sink strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_5_I1_SB_LUT4_O_I1_SB_LUT4_O_LC.I2
+Info:                Defined in:
+Info:                  /Users/mateijordache/Documents/github-stuff/oss-cad-suite/libexec/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  0.4  2.9  Source strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_5_I1_SB_LUT4_O_I1_SB_LUT4_O_LC.O
+Info:  0.6  3.5    Net strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_5_I1_SB_LUT4_O_I1[1] (3,10) -> (3,10)
+Info:                Sink strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_5_I1_SB_LUT4_O_I1_SB_LUT4_I2_LC.I3
+Info:                Defined in:
+Info:                  /Users/mateijordache/Documents/github-stuff/oss-cad-suite/libexec/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  0.3  3.8  Source strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_5_I1_SB_LUT4_O_I1_SB_LUT4_I2_LC.O
+Info:  0.6  4.4    Net strobe_i0_SB_DFFESR_Q_D_SB_LUT4_O_I2[3] (3,10) -> (3,11)
+Info:                Sink cd_sync.ready_SB_LUT4_I3_LC.I2
+Info:                Defined in:
+Info:                  /Users/mateijordache/Documents/github-stuff/oss-cad-suite/libexec/../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:  0.4  4.8  Source cd_sync.ready_SB_LUT4_I3_LC.O
+Info:  2.8  7.5    Net cd_sync.ready_SB_LUT4_I3_O (3,11) -> (17,0)
+Info:                Sink $gbuf_cd_sync.ready_SB_LUT4_I3_O_$glb_sr.USER_SIGNAL_TO_GLOBAL_BUFFER
+Info:  0.6  8.2  Source $gbuf_cd_sync.ready_SB_LUT4_I3_O_$glb_sr.GLOBAL_BUFFER_OUTPUT
+Info:  0.5  8.6    Net cd_sync.ready_SB_LUT4_I3_O_$glb_sr (17,0) -> (4,12)
+Info:                Sink counter_SB_DFFSR_Q_D_SB_LUT4_O_8_LC.SR
+Info:  0.1  8.7  Setup counter_SB_DFFSR_Q_D_SB_LUT4_O_8_LC.SR
+Info: 2.8 ns logic, 5.9 ns routing
+
+Info: Critical path report for cross-domain path 'posedge cd_sync_clk100_0__i' -> '<async>':
+Info: curr total
+Info:  0.5  0.5  Source strobe_i0_SB_LUT4_I0_LC.O
+Info:  1.1  1.7    Net strobe_seven_segment_0__g__o (1,10) -> (1,14)
+Info:                Sink pin_seven_segment_0__g.seven_segment_0__g__o_n_SB_LUT4_O_LC.I3
+Info:                Defined in:
+Info:                  /Users/mateijordache/Library/Python/3.10/lib/python/site-packages/amaranth/build/res.py:159
+Info:  0.3  2.0  Source pin_seven_segment_0__g.seven_segment_0__g__o_n_SB_LUT4_O_LC.O
+Info:  1.3  3.3    Net pin_seven_segment_0__g.seven_segment_0__g__o_n (1,14) -> (0,18)
+Info:                Sink pin_seven_segment_0__g.seven_segment_0__g_0.D_OUT_0
+Info:                Defined in:
+Info:                  /Users/mateijordache/Library/Python/3.10/lib/python/site-packages/amaranth/vendor/_lattice_ice40.py:474
+Info: 0.9 ns logic, 2.4 ns routing
+
+Info: Max frequency for clock 'cd_sync_clk100_0__i': 114.69 MHz (PASS at 100.00 MHz)
+
+Info: Max delay posedge cd_sync_clk100_0__i -> <async>: 3.26 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 3 endpoint(s)
+Info:          + represents [1,3) endpoint(s)
+Info: [  1281,   5283) |************************************************************ 
+Info: [  5283,   9285) |****************************************************+
+Info: [  9285,  13287) | 
+Info: [ 13287,  17289) | 
+Info: [ 17289,  21291) | 
+Info: [ 21291,  25293) | 
+Info: [ 25293,  29295) | 
+Info: [ 29295,  33297) | 
+Info: [ 33297,  37299) | 
+Info: [ 37299,  41301) | 
+Info: [ 41301,  45303) | 
+Info: [ 45303,  49305) | 
+Info: [ 49305,  53307) | 
+Info: [ 53307,  57309) | 
+Info: [ 57309,  61311) | 
+Info: [ 61311,  65313) | 
+Info: [ 65313,  69315) | 
+Info: [ 69315,  73317) | 
+Info: [ 73317,  77319) | 
+Info: [ 77319,  81321) |***+
+
+Info: Program finished normally.
